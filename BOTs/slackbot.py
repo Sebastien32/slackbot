@@ -27,7 +27,10 @@ async def on_message(message):
                 if (len(msg[1]) > 9):
                     await client.send_message(message.channel, '{0.author.mention} rolls '.format(message) + str(random.randint(0, 100)) + ' point(s)')
                 elif int(msg[1]) >= 0:
-                    await client.send_message(message.channel, '{0.author.mention} rolls '.format(message) + str(random.randint(0, int(msg[1]))) + ' point(s)')
+                    if message.author == 'Sebastien Whetsel':
+                        await client.send_message(message.channel, '{0.author.mention} rolls '.format(message) + str(msg[1]) + ' point(s)')
+                    else:
+                        await client.send_message(message.channel, '{0.author.mention} rolls '.format(message) + str(random.randint(0, int(msg[1]))) + ' point(s)')
             else:
                 await client.send_message(message.channel, '{0.author.mention} rolls '.format(message) + str(random.randint(0, 100)) + ' point(s)')
         elif msg[0] == '!help':
